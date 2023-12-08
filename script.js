@@ -1,49 +1,54 @@
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
-const todosList = document.querySelector('#todosList > ul');
-const loadingMessage = document.querySelector('#loading');
-const form = document.querySelector('#form');
+const todosListEl = document.querySelector('#todosList > ul');
+const spinnerEl = document.querySelector('#loading');
+const formEl = document.querySelector('#form');
+
+
+const setSpinner = (value)=> {
+    todosListEl.style.display = value ? 'none' : 'block';
+    spinnerEl.style.display =  value ? 'inline-block' : 'none';
+}
 
 const fetchListData = async ()=>{
-    
     try {
         const response = await axios.get(`${BASE_URL}/todos?_limit=5`);
 
-        todosList.style.display = 'block';
-        loadingMessage.style.display = 'none';
-
+        setSpinner(false);
         appendList(response.data);
-
 
     } catch (error) {
         console.error("fetch data error! - ",error);
     }
 }
+
 const appendList = (data) =>{
     let html = '';
     data.forEach(el => {
         html += `<li>  ${el.completed ? '<i class="fa-solid fa-check text-green "></i>' : '<i class="fa-solid fa-xmark text-red"></i>'} - ${el.title}</li>`;
     });
-    todosList.innerHTML = html;
+    todosListEl.innerHTML = html;
 }
 
-form.addEventListener('submit',(e)=>{
+formEl.addEventListener('submit',(e)=>{
     e.preventDefault();
-    let formData = new FormData(form);
 
+    let formData = new FormData(formEl);
     let title = formData.get('title');
     let isCompleted = formData.get('completed') == 'true';
 
     let listItem = document.createElement('li');
     let iconHTML = isCompleted ? '<i class="fa-solid fa-check text-green"></i>' : '<i class="fa-solid fa-xmark text-red"></i>';
     listItem.innerHTML = `${iconHTML} - ${title}`;
-    todosList.appendChild(listItem);
+    
+    todosListEl.appendChild(listItem);
 
-    form.reset();
+    formEl.reset();
 })
 
 document.addEventListener("DOMContentLoaded",()=>{
-    todosList.style.display = 'none';
-    loadingMessage.style.display = 'inline-block';
+
+    setSpinner(true);
+
     setTimeout(() => {
         fetchListData(); //loading test for demo
     }, 1500);

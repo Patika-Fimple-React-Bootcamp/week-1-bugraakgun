@@ -8,14 +8,24 @@ body{
 
 .container{
     width: 60%;
-    margin: 50px auto;
+    margin: 10% auto;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     border-radius: 20px;
     background-color: rgba(0,0,0,0.1);
     padding:30px;
 }
-
+.task-body{
+    display:flex;
+    flex-direction: row;
+}
+.task-title{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:30px;
+    color:white;
+}
 .container:hover{
     background-color: rgba(0,0,0,0.15) !important;
     transition: background-color 0.5s ease;
@@ -148,7 +158,7 @@ body{
 }
 
 .form-border{
-    background:white;
+    background:#ecf0f1;
     display: inline-block;
     padding:30px 20px;
     border: 2px solid #e3e4e7;
@@ -196,7 +206,7 @@ body{
 
 @media screen and (max-width: 768px) {
     .container {
-        width: 90%;
+        width: 90% !important;
         align-items: center;
         justify-content: center;
     }
@@ -204,12 +214,16 @@ body{
 
 @media screen and (max-width: 992px) {
     .container {
-        width: 80%;
-        flex-direction: column;
+        width: 80% !important;
         align-items: center;
         justify-content: center;
     }
     .form-border{
         margin-bottom:20px;
+    }
+    .container .task-body{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }

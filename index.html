@@ -14,28 +14,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="list-form">
-            <div class="form-border">
-                <form class="form-control" id="form">
-                    <label for="title">Title:</label>
-                    <br>
-                    <input type="text" name="title" required>
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="completed" name="completed" value="true">
-                        <label for="completed">Is completed</label>
-                    </div>
-                    <button class="btn" id="submit" type="submit" > Submit</button>
-                </form>
-            </div>
-            
+        <div class="task-title">
+            Patika Fimple React Bootcamp Challenge 1 : Form & List
         </div>
-        <div id="todosList" class="list">
-            <div class="spinner-container">
-                <div id="loading"></div>
+        <div class="task-body">
+            <div class="list-form">
+                <div class="form-border">
+                    <form class="form-control" id="form">
+                        <label for="title">Title:</label>
+                        <br>
+                        <input type="text" name="title" required>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="completed" name="completed" value="true">
+                            <label for="completed">Is completed</label>
+                        </div>
+                        <button class="btn" id="submit" type="submit" > Submit</button>
+                    </form>
+                </div>
             </div>
-            <ul class="todos-list"></ul>
+            <div id="todosList" class="list">
+                <div class="spinner-container">
+                    <div id="loading"></div>
+                </div>
+                <ul class="todos-list"></ul>
+            </div>
         </div>
-        
     </div>
     <div class="footer">
         <span>Buğra Akgün</span>
